@@ -1,0 +1,9 @@
+.list-item-group {
+    background: lightgray;
+    border: 1px solid #ddd;
+    margin-bottom: 40px;
+    margin-right: 40px;
+    padding: 40px;
+    width: 150px;
+    border-radius: 5px;
+  }
