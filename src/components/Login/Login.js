@@ -25,25 +25,26 @@ class Login extends Component {
   }
 
   setAuthState = () => {
-    let i;
-    let data = {
-      username: this.state.username,
-      password: this.state.password
-    };
-    this.getData('https://swapi.dev/api/people/?format=json').then((res)=> {
-      for(i=0; i< res.results.length; i++) {
-        if(data.username === res.results[i].name && data.password === res.results[i].birth_year) {
-          localStorage.setItem('isUserAuthenticated', true);
-          this.props.history.push('/planets');
+    const { username, password } = this.state;
+
+    this.getData("https://swapi.dev/api/people/?format=json").then((res) => {
+      console.log(res);
+
+      res.results.forEach((character) => {
+        if (
+          username.toLowerCase() === character.name.toLowerCase() &&
+          password.toLowerCase() === character.birth_year.toLowerCase()
+        ) {
+          localStorage.setItem("isUserAuthenticated", true);
+          this.props.history.push("/planets");
           return;
+        } else {
+          localStorage.setItem("isUserAuthenticated", false);
+          return this.setState({ error: "Incorrect username or password!" });
         }
-        else {
-          localStorage.setItem('isUserAuthenticated', false);
-          return;
-        }
-      }
+      });
     });
-  }
+  };
 
   getData = (url) => {
     return fetch(url).then((response) => response.json());

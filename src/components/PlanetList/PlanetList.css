@@ -34,6 +34,7 @@
 .navbar-header button{
     padding: 5px 20px;
     background-color: #ffffff;
+    cursor: grab;
 }
 
 .navbar-header button a{
