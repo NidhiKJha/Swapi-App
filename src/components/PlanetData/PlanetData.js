@@ -10,9 +10,10 @@ class PlanetData extends Component {
 					<div className="planet-name">
 						{this.props.planetName.name}
 					</div>
+					<br/>
 					<div className="planet-population-container">
 						<div className="planet-population">
-							{this.props.planetName.population}
+							Population:{this.props.planetName.population}
 						</div>
 					</div>
 				</div>
